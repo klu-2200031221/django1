@@ -1,0 +1,54 @@
+{% extends 'Navbar/facultynavbar.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'path/to/bootstrap/css/bootstrap.min.css' %}">
+</head>
+<body>
+{% block body %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <form method="post" action="#">
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                            <label for="courseid">Course ID:</label>
+                            <input type="text" class="form-control" name="courseid" value="{{ coursedetails.courseid }}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="coursename">Course Name:</label>
+                            <input type="text" class="form-control" name="coursename" value="{{ coursedetails.coursename }}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="offeredby">Offered By:</label>
+                            <input type="text" class="form-control" name="offeredby" value="{{ coursedetails.offeredby }}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="offeringyear">Offering Year:</label>
+                            <input type="text" class="form-control" name="offeringyear" value="{{ coursedetails.offeringyear }}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="credits">Credits:</label>
+                            <input type="text" class="form-control" name="credits" value="{{ coursedetails.credits }}" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>

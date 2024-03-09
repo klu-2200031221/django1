@@ -1,0 +1,34 @@
+{% extends 'Navbar/studentnavbar.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block body %}
+<div class="container mt-5">
+    <h2>Course Details</h2>
+
+    <div class="row">
+        {% for coursedetails in coursedetailslist %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ coursedetails.courseid }}</h5>
+                    <p class="card-text">
+                        <strong>Course_Name:</strong> {{ coursedetails.coursename }}<br>
+                        <strong>Offered_By:</strong> {{ coursedetails.offeredby }}<br>
+                        <strong>Offering_Year:</strong> {{ coursedetails.offeringyear }}<br>
+                        <strong>Credits:</strong> {{ coursedetails.credits }}<br>
+                    </p>
+                    <a href="{% url 'studentmodule:applycourse' coursedetails.id%}" class="btn btn-success">Register Course</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>

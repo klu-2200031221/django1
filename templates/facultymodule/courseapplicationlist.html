@@ -1,0 +1,45 @@
+{% extends 'Navbar/facultynavbar.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+{% block body %}
+   <h1 style="text-align: center; margin-top: 20px;">Course Applications</h1>
+<table border="2" style="margin: 0 auto;">
+    <thead>
+    <tr>
+        <th style="padding: 10px;">Name</th>
+        <th style="padding: 10px;">Email</th>
+        <th style="padding: 10px;">Course Details</th>
+        <th style="padding: 10px;">Certificate</th>
+        <th style="padding: 10px;">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for courseapplication in courseapplications %}
+    <tr>
+        <td style="padding: 10px;">{{ courseapplication.name }}</td>
+        <td style="padding: 10px;">{{ courseapplication.email }}</td>
+        <td style="padding: 10px;">{{courseapplication.coursedetails}}</td>
+
+        <td style="padding: 10px;">
+            {% if courseapplication.certificate %}
+            <a href="{{courseapplication.certificate.url}}" target="_blank">Download Marks-Memo</a>
+            {% endif %}
+        </td>
+        <td style="padding: 10px;">
+            <a href="#" style="background-color: #4CAF50; color: white; padding: 5px 10px; text-decoration: none; border-radius: 4px;">Register Course</a>
+            <a href="#" style="background-color: #f44336; color: white; padding: 5px 10px; text-decoration: none; border-radius: 4px; margin-left: 5px;">Application Rejected</a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
+</body>
+</html>

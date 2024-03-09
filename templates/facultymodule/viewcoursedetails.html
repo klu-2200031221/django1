@@ -1,0 +1,32 @@
+{% extends 'Navbar/facultynavbar.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block body %}
+<div class="container mt-5">
+    <div class="row">
+        {% for coursedetails in coursedetailslist %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ coursedetails.courseid }}</h5>
+                    <p class="card-text">Course_Name: {{ coursedetails.coursename }}</p>
+                    <p class="card-text">Offered_By: {{ coursedetails.offeredby }}</p>
+                    <p class="card-text">Offering_Year: {{ coursedetails.offeringyear }}</p>
+                    <p class="card-text">Credits: {{ coursedetails.credits }}</p>
+
+                    <a href="{% url 'facultymodule:editcoursedetails' coursedetails.id%}" class="btn btn-primary">Edit</a>
+                    <a href="{% url 'facultymodule:deletecoursedetails' coursedetails.id%}" class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>
